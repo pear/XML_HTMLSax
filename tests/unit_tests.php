@@ -16,9 +16,9 @@ require_once(SIMPLE_TEST . 'reporter.php');
 if (!defined('XML_HTMLSAX')) {
     define('XML_HTMLSAX', '../../');
 }
-require_once(XML_HTMLSAX . 'XML_HTMLSax.php');
-require_once(XML_HTMLSAX . 'HTMLSax/XML_HTMLSax_States.php');
-require_once(XML_HTMLSAX . 'HTMLSax/XML_HTMLSax_Decorators.php');
+require_once(XML_HTMLSAX . 'HTMLSax.php');
+require_once(XML_HTMLSAX . 'HTMLSax/States.php');
+require_once(XML_HTMLSAX . 'HTMLSax/Decorators.php');
 
 $test = &new GroupTest('XML::HTMLSax Tests');
 $test->addTestFile('xml_htmlsax_test.php');

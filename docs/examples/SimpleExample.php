@@ -3,7 +3,7 @@
  * $Id$
  * Shows all the handlers in use with a simple document
  */
-require_once('XML/XML_HTMLSax.php');
+require_once('XML/HTMLSax.php');
 
 
 class MyHandler {

@@ -142,7 +142,7 @@ Further examples are available in the examples directory of this package.
 
 <?php
 // Include HTMLSax
-require_once('XML/XML_HTMLSax.php');
+require_once('XML/HTMLSax.php');
 
 // Define a customer handler class
 class MyHandler {

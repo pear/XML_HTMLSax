@@ -3,7 +3,7 @@
  * $Id$
  * Demonstrates conversion of HTML to XHTML
  */
-require_once('XML/XML_HTMLSax.php');
+require_once('XML/HTMLSax.php');
 
 class HTMLtoXHTMLHandler {
     var $xhtml;

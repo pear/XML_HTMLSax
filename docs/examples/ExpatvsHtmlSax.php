@@ -4,7 +4,7 @@
 * Shows HTMLSax in a race against Expat. Note that HTMLSax performance
 * gets slower on PHP < 4.3.0 or if parser options are being used
 */
-require_once('XML/XML_HTMLSax.php');
+require_once('XML/HTMLSax.php');
 
 function getmicrotime(){ 
     list($usec, $sec) = explode(" ",microtime()); 
