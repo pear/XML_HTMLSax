@@ -33,8 +33,8 @@ require_once('PEAR.php');
 if (!defined('XML_HTMLSAX')) {
     define('XML_HTMLSAX', 'XML/');
 }
-require_once(XML_HTMLSAX . 'HTMLSax/XML_HTMLSax_States.php');
-require_once(XML_HTMLSAX . 'HTMLSax/XML_HTMLSax_Decorators.php');
+require_once(XML_HTMLSAX . 'HTMLSax/States.php');
+require_once(XML_HTMLSAX . 'HTMLSax/Decorators.php');
 /**
 * Base State Parser
 * @package XML_HTMLSax
