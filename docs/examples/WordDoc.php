@@ -1,11 +1,9 @@
 <?php
 /***
  * $Id$
- * Shows the impact of XML_OPTION_FULL_ESCAPES when parsing Word documents
- * saved as HTML
+ * Shows HTMLSax parsing Word generated HTML
  */
-define ( 'XML_HTMLSAX','../../');
-require_once(XML_HTMLSAX.'HTMLSax.php');
+require_once('XML/HTMLSax.php');
 
 class MyHandler {
     function escape($parser,$data) {
