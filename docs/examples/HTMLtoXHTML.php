@@ -3,7 +3,7 @@
  * $Id$
  * Demonstrates conversion of HTML to XHTML
  */
-require_once('XML/HTMLSax.php');
+require_once('XML/HTMLSax3.php');
 
 class HTMLtoXHTMLHandler {
     var $xhtml;
@@ -100,7 +100,7 @@ $doc=file_get_contents('example.html');
 $handler=& new HTMLtoXHTMLHandler();
 
 // Instantiate the parser
-$parser=& new XML_HTMLSax();
+$parser=& new XML_HTMLSax3();
 
 // Register the handler with the parser
 $parser->set_object($handler);

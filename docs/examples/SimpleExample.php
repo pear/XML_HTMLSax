@@ -3,7 +3,7 @@
  * $Id$
  * Shows all the handlers in use with a simple document
  */
-require_once('XML/HTMLSax.php');
+require_once('XML/HTMLSax3.php');
 
 
 class MyHandler {
@@ -60,7 +60,7 @@ EOD;
 $handler=new MyHandler();
 
 // Instantiate the parser
-$parser=& new XML_HTMLSax();
+$parser=& new XML_HTMLSax3();
 
 // Register the handler with the parser
 $parser->set_object($handler);

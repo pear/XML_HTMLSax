@@ -1,13 +1,13 @@
 $Id$
 ++Introduction
-XML_HTMLSax is a SAX based XML parser for badly formed XML documents,
+XML_HTMLSax3 is a SAX based XML parser for badly formed XML documents,
 such as HTML.
 
 The original code base was developed by Alexander Zhukov and published at
 http://sourceforge.net/projects/phpshelve/. Alexander kindly gave permission
 to modify the code and license for inclusion in PEAR.
 
-PEAR::XML_HTMLSax provides an API very similar to the native PHP SAX
+PEAR::XML_HTMLSax3 provides an API very similar to the native PHP SAX
 extension (http://www.php.net/xml), allowing handlers using one to be
 easily adapted to the other. The key difference is HTMLSax will not
 break on badly formed XML, allowing it to be used for parsing HTML
@@ -36,7 +36,7 @@ Thanks also to Marcus Baker (lead developer of SimpleTest:
 http://www.lastcraft.com/simple_test.php) for sorting out the unit tests.
 
 ++Uses
-Some particular situations where XML_HTMLSax can be useful include;
+Some particular situations where XML_HTMLSax3 can be useful include;
 - Template Engines (see WACT for example: http://wact.sf.net)
 - Parsing XML documents (such as those online) where the source is
   out of your control and Expat is choking because it's badly formed.
@@ -73,7 +73,7 @@ Some particular situations where XML_HTMLSax can be useful include;
 - Performance-wise, it runs faster on PHP 4.3.0 thanks to strspn() and
   strcspn() supporting position arguments. For older PHP versions while
   loops are used to achieve the same effect, meaning a slightly higher
-  overhead. Note also that setting XML options with XML_HTMLSax::set_option()
+  overhead. Note also that setting XML options with XML_HTMLSax3::set_option()
   also slows down the parser, the options being handled by "decorators"
   which perform some further formatting on XML events which have already
   been parsed.
@@ -111,7 +111,7 @@ Some particular situations where XML_HTMLSax can be useful include;
   and have to deal with these yourself.
 
 ++ Limitations
-- XML_HTMLSax only supports use of PHP classes as callback handlers;
+- XML_HTMLSax3 only supports use of PHP classes as callback handlers;
   there is no support for using PHP functions as handlers.
 
 - The only weird behaviour is for attributes which only have a left quote
@@ -119,10 +119,10 @@ Some particular situations where XML_HTMLSax can be useful include;
   attribute like $attrs['foo']="bar>Some Text"; This is a trade off against
   allowing XML entities like < and > to appear inside attributes.
 
-- Although the package name might suggest otherwise, XML_HTMLSax currently
+- Although the package name might suggest otherwise, XML_HTMLSax3 currently
   has no special knowledge of HTML (i.e. there is no understanding of whether
   a given HTML document is well formed or not, according to HTML's rules).
-  XML_HTMLSax is primarily intended as a SAX based parser that will not
+  XML_HTMLSax3 is primarily intended as a SAX based parser that will not
   complain about structure of a document it is asked to parse. It even does
   a fair job of parsing http://static.php.net/www.php.net/images/php.gif ...
   Version 3.x will introduce some basic knowledge of HTML grammar to help with
@@ -144,7 +144,7 @@ Further examples are available in the examples directory of this package.
 
 <?php
 // Include HTMLSax
-require_once('XML/HTMLSax.php');
+require_once('XML/HTMLSax3.php');
 
 // Define a customer handler class
 class MyHandler {
@@ -190,7 +190,7 @@ $doc = file_get_contents('http://www.php.net');
 $handler=new MyHandler();
 
 // Instantiate the parser
-$parser=& new XML_HTMLSax();
+$parser=& new XML_HTMLSax3();
 
 // Register the handler with the parser
 $parser->set_object($handler);

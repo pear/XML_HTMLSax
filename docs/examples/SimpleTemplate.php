@@ -3,7 +3,7 @@
  * $Id$
  * Shows how HTMLSax can be used for template parsing
  */
-require_once('XML/HTMLSax.php');
+require_once('XML/HTMLSax3.php');
 
 class SimpleTemplate {
     var $vars = array();
@@ -97,7 +97,7 @@ EOD;
 $tpl->setVar('para2',$para2);
 
 // Instantiate the parser
-$parser=& new XML_HTMLSax();
+$parser=& new XML_HTMLSax3();
 
 // Register the handler with the parser
 $parser->set_object($tpl);

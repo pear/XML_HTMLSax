@@ -4,7 +4,7 @@
 * Shows HTMLSax in a race against Expat. Note that HTMLSax performance
 * gets slower on PHP < 4.3.0 or if parser options are being used
 */
-require_once('XML/HTMLSax.php');
+require_once('XML/HTMLSax3.php');
 
 function getmicrotime(){ 
     list($usec, $sec) = explode(" ",microtime()); 
@@ -36,7 +36,7 @@ $end = getmicrotime();
 echo ( "Expat took:\t\t".(getmicrotime()-$start)."<br />" );
 
 $start = getmicrotime();
-$parser =& new XML_HTMLSax();
+$parser =& new XML_HTMLSax3();
 $parser->set_object($handler);
 $parser->set_element_handler('openHandler','closeHandler');
 $parser->set_data_handler('dataHandler');
