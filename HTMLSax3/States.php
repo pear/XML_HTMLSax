@@ -154,7 +154,7 @@ class XML_HTMLSax3_OpeningTagState {
                         $context->scanUntilCharacters("> \n\r\t");
                 }
             } else if ($char !== NULL) {
-                $attributevalue = true;
+                $attributevalue = NULL;
                 $context->unscanCharacter();
             }
             $Attributes[$attributename] = $attributevalue;
