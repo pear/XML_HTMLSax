@@ -174,7 +174,29 @@ class TestOfComments extends ParserTestCase {
     function testFullEscapes() {
         $this->listener->expectOnce('escapeHandler', array('*', '-- A comment --'));
         $this->parser->set_option('XML_OPTION_FULL_ESCAPES');
-        $this->parser->parse('<!-- A comment -->');
+        $this->parser->parse('a<!-- A comment -->b');
+    }
+    function testWordEscape() {
+        $this->listener->expectOnce('escapeHandler', array('*', '[endif]'));
+        $this->parser->parse('a<![endif]>b');
+    }
+    function testWordEscapeNasty() {
+        $this->listener->expectOnce('escapeHandler', array('*', '[if gte mso 9]><xml></xml><![endif]'));
+        $this->parser->parse('a<!--[if gte mso 9]><xml></xml><![endif]-->b');
+    }
+    /**
+    * Parser should probably report some kind of error here.
+    */
+    function testBadlyFormedComment() {
+        $this->listener->expectOnce('escapeHandler', array('*', ' This is badly formed>b'));
+        $this->parser->parse('a<!-- This is badly formed>b');
+    }
+    /**
+    * Parser should probably report some kind of error here.
+    */
+    function testBadlyFormedCDATA() {
+        $this->listener->expectOnce('escapeHandler', array('*', ' This is badly formed>b'));
+        $this->parser->parse('a<![CDATA[ This is badly formed>b');
     }
 }
 
