@@ -209,33 +209,28 @@ class XML_HTMLSax_EscapeState {
     * @access protected
     */
     function parse(&$context) {
-        if ($context->parser_options['XML_OPTION_FULL_ESCAPES']==0) {
+        $char = $context->ScanCharacter();
+        if ($char == '-') {
             $char = $context->ScanCharacter();
             if ($char == '-') {
-                $char = $context->ScanCharacter();
-                if ($char == '-') {
-                    $text = $context->scanUntilString('-->');
-                    $context->IgnoreCharacter();
-                    $context->IgnoreCharacter();
-                } else {
-                    $context->unscanCharacter();
-                    $text = $context->scanUntilString('>');
-                }
-            } else if ( $char == '[') {
-                $context->scanUntilString('CDATA[');
-                for ( $i=0;$i<6;$i++ ) {
-                    $context->IgnoreCharacter();
-                }
-                $text = $context->scanUntilString(']]>');
-                $context->IgnoreCharacter();
-                $context->IgnoreCharacter();
+                $context->unscanCharacter();
+                $context->unscanCharacter();
+                $text = $context->scanUntilString('-->');
+                $text .= $context->scanCharacter();
+                $text .= $context->scanCharacter();
             } else {
                 $context->unscanCharacter();
                 $text = $context->scanUntilString('>');
             }
+        } else if ( $char == '[') {
+            $context->unscanCharacter();
+            $text = $context->scanUntilString(']>');
+            $text.= $context->scanCharacter();
         } else {
+            $context->unscanCharacter();
             $text = $context->scanUntilString('>');
         }
+
         $context->IgnoreCharacter();
         if ($text != '') {
             $context->handler_object_escape->

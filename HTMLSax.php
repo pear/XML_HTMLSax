@@ -284,6 +284,14 @@ class XML_HTMLSax_StateParser {
             $this->handler_object_data =& $decorator;
             $this->handler_method_data = 'breakData';
         }
+        // Note switched on by default
+        if ($this->parser_options['XML_OPTION_FULL_ESCAPES']==0) {
+            $decorator =& new XML_HTMLSax_Escape_Stripper(
+                $this->handler_object_escape,
+                $this->handler_method_escape);
+            $this->handler_object_escape =& $decorator;
+            $this->handler_method_escape = 'strip';
+        }
         $this->rawtext = $data;
         $this->length = strlen($data);
         $this->position = 0;
