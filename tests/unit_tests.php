@@ -13,14 +13,14 @@ require_once(SIMPLE_TEST . 'unit_tester.php');
 require_once(SIMPLE_TEST . 'mock_objects.php');
 require_once(SIMPLE_TEST . 'reporter.php');
 
-if (!defined('XML_HTMLSAX')) {
-    define('XML_HTMLSAX', '../../');
+if (!defined('XML_HTMLSAX3')) {
+    define('XML_HTMLSAX3', '../');
 }
-require_once(XML_HTMLSAX . 'HTMLSax.php');
-require_once(XML_HTMLSAX . 'HTMLSax/States.php');
-require_once(XML_HTMLSAX . 'HTMLSax/Decorators.php');
+require_once(XML_HTMLSAX3 . 'HTMLSax3.php');
+require_once(XML_HTMLSAX3 . 'HTMLSax3/States.php');
+require_once(XML_HTMLSAX3 . 'HTMLSax3/Decorators.php');
 
-$test = &new GroupTest('XML::HTMLSax Tests');
+$test = &new GroupTest('XML::HTMLSax3 Tests');
 $test->addTestFile('xml_htmlsax_test.php');
 $test->run(new HtmlReporter());
 ?>
