@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
 <package version="1.0">
-  <name>XML_HTMLSax</name>
+  <name>XML_HTMLSax3</name>
   <summary>A SAX parser for HTML and other badly formed XML documents</summary>
-  <description>XML_HTMLSax is a SAX based XML parser for badly formed XML documents, such as HTML.
+  <description>XML_HTMLSax3 is a SAX based XML parser for badly formed XML documents, such as HTML.
   The original code base was developed by Alexander Zhukov and published at http://sourceforge.net/projects/phpshelve/. Alexander kindly gave permission to modify the code and license for inclusion in PEAR.
 
-  PEAR::XML_HTMLSax provides an API very similar to the native PHP XML extension (http://www.php.net/xml), allowing handlers using one to be easily adapted to the other. The key difference is HTMLSax will not break on badly formed XML, allowing it to be used for parsing HTML documents. Otherwise HTMLSax supports all the handlers available from Expat except namespace and external entity handlers. Provides methods for handling XML escapes as well as JSP/ASP opening and close tags.
+  PEAR::XML_HTMLSax3 provides an API very similar to the native PHP XML extension (http://www.php.net/xml), allowing handlers using one to be easily adapted to the other. The key difference is HTMLSax will not break on badly formed XML, allowing it to be used for parsing HTML documents. Otherwise HTMLSax supports all the handlers available from Expat except namespace and external entity handlers. Provides methods for handling XML escapes as well as JSP/ASP opening and close tags.
 
   Version 1.x introduced an API similar to the native SAX extension but used a slow character by character approach to parsing.
 
@@ -26,25 +26,25 @@
     </maintainer>
   </maintainers>
   <release>
-    <version>3.0.0</version>
-    <date>2004-05-28</date>
+    <version>3.0.0RC1</version>
+    <date>2004-06-02</date>
     <license>PHP</license>
-    <state>stable</state>
+    <state>beta</state>
     <notes>* Now able to parse Word generated HTML - fixed bug with parsing of XML escape sequences
 * API break (minor): no longer extends PEAR
 * API break (minor): attributes with no value (like option selected) are now populated with NULL instead of TRUE
 * API break (minor): replaced XML_OPTION_FULL_ESCAPES with XML_OPTION_STRIP_ESCAPES - by default you now get back the complete escape sequence
-* Modified file names to meet PEAR conventions. Old include file still available for BC but you should prefer require_once 'XML/HTMLSax.php' from now on
+* Re PEAR version naming rules, you now include XML/HTMLSax3.php and the main class is called XML_HTMLSax3
 * Added some more examples
 </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>
+      <dep type="ext" rel="has" optional="yes">PCRE</dep>
     </deps>
     <filelist>
-      <file role="php" baseinstalldir="XML" name="HTMLSax.php"/>
-      <file role="php" baseinstalldir="XML" name="XML_HTMLSax.php"/>
-      <file role="php" baseinstalldir="XML" name="HTMLSax/States.php"/>
-      <file role="php" baseinstalldir="XML" name="HTMLSax/Decorators.php"/>
+      <file role="php" baseinstalldir="XML" name="HTMLSax3.php"/>
+      <file role="php" baseinstalldir="XML" name="HTMLSax3/States.php"/>
+      <file role="php" baseinstalldir="XML" name="HTMLSax3/Decorators.php"/>
       <file role="doc" baseinstalldir="XML" name="docs/Readme"/>
       <file role="doc" baseinstalldir="XML" name="docs/examples/SimpleExample.php"/>
       <file role="doc" baseinstalldir="XML" name="docs/examples/HTMLtoXHTML.php"/>
