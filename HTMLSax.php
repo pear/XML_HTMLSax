@@ -29,7 +29,6 @@
 /**
 * Required classes
 */
-require_once('PEAR.php');
 if (!defined('XML_HTMLSAX')) {
     define('XML_HTMLSAX', 'XML/');
 }
@@ -449,7 +448,7 @@ class XML_HTMLSax_NullHandler {
 * @package XML_HTMLSax
 * @access public
 */
-class XML_HTMLSax extends Pear {
+class XML_HTMLSax {
     /**
     * Instance of concrete subclass of XML_HTMLSax_StateParser
     * @var XML_HTMLSax_StateParser
@@ -500,13 +499,15 @@ class XML_HTMLSax extends Pear {
             $this->state_parser->handler_default =& $object;
             return true;
         } else {
-            return $this->raiseError('XML_HTMLSax::set_object requires '.
+            require_once('PEAR.php');
+            PEAR::raiseError('XML_HTMLSax::set_object requires '.
                 'an object instance');
         }
     }
 
     /**
-    * Sets a parser option. Returns a PEAR Error if option is invalid<br />
+    * Sets a parser option. By default all options are switched off.
+    * Returns a PEAR Error if option is invalid<br />
     * <b>Available options:</b>
     * <ul>
     * <li>XML_OPTION_TRIM_DATA_NODES: trim whitespace off the beginning
@@ -515,12 +516,19 @@ class XML_HTMLSax extends Pear {
     * handler calls</li>
     * <li>XML_OPTION_TAB_BREAK: tabs result in additional data handler
     * calls</li>
-    * <li>XML_OPTION_ENTIES_UNPARSED: XML entities are returned as
+    * <li>XML_OPTION_ENTITIES_UNPARSED: XML entities are returned as
     * seperate data handler calls in unparsed form</li>
-    * <li>XML_OPTION_ENTIES_PARSED: (PHP 4.3.0+ only) XML entities are
+    * <li>XML_OPTION_ENTITIES_PARSED: (PHP 4.3.0+ only) XML entities are
     * returned as seperate data handler calls and are parsed with 
     * PHP's html_entity_decode() function</li>
+    * <li>XML_OPTION_FULL_ESCAPES: when switched on, the full content of
+    * and XML escape sequence is returned. Switched off, comment or CDATA
+    * markup in the escape is removed.</li>
+    * <li>
     * </ul>
+    * To get HTMLSax to behave in the same way as the native PHP SAX parser,
+    * using it's default state, you need to switch on XML_OPTION_LINEFEED_BREAK,
+    * XML_OPTION_ENTITIES_PARSED and XML_OPTION_CASE_FOLDING
     * @param string name of parser option
     * @param int (optional) 1 to switch on, 0 for off
     * @access public
@@ -531,7 +539,8 @@ class XML_HTMLSax extends Pear {
             $this->state_parser->parser_options[$name] = $value;
             return true;
         } else {
-            return $this->raiseError('XML_HTMLSax::set_option('.$name.') illegal');
+            require_once('PEAR.php');
+            PEAR::raiseError('XML_HTMLSax::set_option('.$name.') illegal');
         }
     }
 
