@@ -22,7 +22,7 @@
 // $Id$
 //
 /**
-* Main parser components
+* Parsing states.
 * @package XML_HTMLSax
 * @version $Id$
 */
