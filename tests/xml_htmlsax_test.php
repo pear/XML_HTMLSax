@@ -103,7 +103,7 @@ class TestOfElements extends ParserTestCase {
     function testEmptyAttributes() {
         $this->listener->expectOnce(
                 'startHandler',
-                array('*', 'tag', array("a" => true, "b" => true, "c" => true),FALSE));
+                array('*', 'tag', array("a" => NULL, "b" => NULL, "c" => NULL),FALSE));
         $this->parser->parse('<tag a b c>');
     }
     function testNastyAttributes() {
@@ -163,25 +163,28 @@ class TestOfComments extends ParserTestCase {
     }
     function testSimple() {
         $this->listener->expectOnce('escapeHandler', array('*', ' A comment '));
+        $this->parser->set_option('XML_OPTION_STRIP_ESCAPES');
         $this->parser->parse('<!-- A comment -->');
     }
     function testNasty() {
         $this->listener->expectOnce(
                 'escapeHandler',
                 array('*', ' <tag></tag><?php ?><' . '% %> '));
+        $this->parser->set_option('XML_OPTION_STRIP_ESCAPES');
         $this->parser->parse('<tag><!-- <tag></tag><?php ?><' . '% %> --></tag>');
     }
     function testFullEscapes() {
         $this->listener->expectOnce('escapeHandler', array('*', '-- A comment --'));
-        $this->parser->set_option('XML_OPTION_FULL_ESCAPES');
         $this->parser->parse('a<!-- A comment -->b');
     }
     function testWordEscape() {
         $this->listener->expectOnce('escapeHandler', array('*', '[endif]'));
+        $this->parser->set_option('XML_OPTION_STRIP_ESCAPES');
         $this->parser->parse('a<![endif]>b');
     }
     function testWordEscapeNasty() {
         $this->listener->expectOnce('escapeHandler', array('*', '[if gte mso 9]><xml></xml><![endif]'));
+        $this->parser->set_option('XML_OPTION_STRIP_ESCAPES');
         $this->parser->parse('a<!--[if gte mso 9]><xml></xml><![endif]-->b');
     }
     /**
@@ -189,6 +192,7 @@ class TestOfComments extends ParserTestCase {
     */
     function testBadlyFormedComment() {
         $this->listener->expectOnce('escapeHandler', array('*', ' This is badly formed>b'));
+        $this->parser->set_option('XML_OPTION_STRIP_ESCAPES');
         $this->parser->parse('a<!-- This is badly formed>b');
     }
     /**
@@ -196,6 +200,7 @@ class TestOfComments extends ParserTestCase {
     */
     function testBadlyFormedCDATA() {
         $this->listener->expectOnce('escapeHandler', array('*', ' This is badly formed>b'));
+        $this->parser->set_option('XML_OPTION_STRIP_ESCAPES');
         $this->parser->parse('a<![CDATA[ This is badly formed>b');
     }
 }
