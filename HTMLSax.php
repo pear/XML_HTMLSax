@@ -34,27 +34,7 @@ if (!defined('XML_HTMLSAX')) {
 }
 require_once(XML_HTMLSAX . 'HTMLSax/States.php');
 require_once(XML_HTMLSAX . 'HTMLSax/Decorators.php');
-/**
-* Passed as fourth argument to opening and closing handler to signify
-* a tag which was immediately closed like <this />
-* @package XML_HTMLSax
-*/
-define ('XML_HTMLSAX_EMTPY',1);
-/**
-* Passed as fourth argument to opening and closing handler to signify
-* special HTML tags which are not supposed to have a closing tag such
-* as the hr tag. Only used when XML_OPTION_HTML_SPECIALS is on
-* @package XML_HTMLSax
-*/
-define ('XML_HTMLSAX_ENDTAG_FORBIDDEN',2);
-/**
-* Passed as fourth argument to closing handler only, to signify
-* special HTML tags which are not supposed to have a closing tag such
-* as the hr tag but where a closing tag has been used. Only used when
-* XML_OPTION_HTML_SPECIALS is on
-* @package XML_HTMLSax
-*/
-define ('XML_HTMLSAX_ENDTAG_FORBIDDEN_WARNING',3);
+
 /**
 * Base State Parser
 * @package XML_HTMLSax
