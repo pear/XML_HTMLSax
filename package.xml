@@ -30,16 +30,16 @@
     <date>2004-06-02</date>
     <license>PHP</license>
     <state>beta</state>
-    <notes>* Now able to parse Word generated HTML - fixed bug with parsing of XML escape sequences
+    <notes>* Re PEAR version naming rules, you now include XML/HTMLSax3.php and the main class is called XML_HTMLSax3
+* Now able to parse Word generated HTML - fixed bug with parsing of XML escape sequences
 * API break (minor): no longer extends PEAR
 * API break (minor): attributes with no value (like option selected) are now populated with NULL instead of TRUE
 * API break (minor): replaced XML_OPTION_FULL_ESCAPES with XML_OPTION_STRIP_ESCAPES - by default you now get back the complete escape sequence
-* Re PEAR version naming rules, you now include XML/HTMLSax3.php and the main class is called XML_HTMLSax3
 * Added some more examples
 </notes>
     <deps>
       <dep type="php" rel="ge" version="4.0.5"/>
-      <dep type="ext" rel="has" optional="yes">PCRE</dep>
+      <dep type="ext" rel="has" optional="yes">pcre</dep>
     </deps>
     <filelist>
       <file role="php" baseinstalldir="XML" name="HTMLSax3.php"/>
